@@ -29,15 +29,13 @@ tempo = 280
 music.setVolume(0)
 basic.setLedColor(0x00ff00)
 basic.forever(function () {
-    if (input.acceleration(Dimension.X) == 0) {
-        basic.showString("HALT! FINGER WEG!")
-    } else {
-        if (input.soundLevel() > 75) {
-            blinken()
-            basic.setLedColor(0xff0000)
-            basic.showString("Happy Halloween")
-            basic.setLedColor(0x00ff00)
-            tempo = 280
-        }
+    if (input.acceleration(Dimension.X) > 25) {
+        basic.showString("HALT! Pfoten weg!")
+    } else if (input.soundLevel() > 75) {
+        blinken()
+        basic.setLedColor(0xff0000)
+        basic.showString("Happy Halloween")
+        basic.setLedColor(0x00ff00)
+        tempo = 280
     }
 })

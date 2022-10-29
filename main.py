@@ -30,10 +30,13 @@ basic.set_led_color(0x00ff00)
 
 def on_forever():
     global tempo
-    if input.sound_level() > 75:
-        blinken()
-        basic.set_led_color(0xff0000)
-        basic.show_string("Happy Halloween")
-        basic.set_led_color(0x00ff00)
-        tempo = 280
+    if input.acceleration(Dimension.X) > 25:
+        basic.show_string("HALT! Pfoten weg!")
+    else:
+        if input.sound_level() > 75:
+            blinken()
+            basic.set_led_color(0xff0000)
+            basic.show_string("Happy Halloween")
+            basic.set_led_color(0x00ff00)
+            tempo = 280
 basic.forever(on_forever)
